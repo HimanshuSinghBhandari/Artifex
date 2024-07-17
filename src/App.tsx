@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Front from './pages/front';
+import FooterPage from './pages/footer';
 import './App.css';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
         <Route path="/" element={<Front />} />
         {/* Add other routes here as needed */}
       </Routes>
+      <FooterPage/>
     </Router>
   );
 }
