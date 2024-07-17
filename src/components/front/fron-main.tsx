@@ -11,7 +11,7 @@ const FrontMain: React.FC = () => {
         whileHover={{ scale: 1.1 }}
       >
         <motion.a
-          href="https://github.com/your-repo-link"
+          href="https://github.com/HimanshuSinghBhandari/Artifex"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center space-x-2"
