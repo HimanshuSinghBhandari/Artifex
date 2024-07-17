@@ -27,10 +27,20 @@ const FrontDiv: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <div className="absolute top-0 left-0 w-3/4 h-3/4 bg-purple-500 rounded-xl -z-10"></div>
-          <img
+          <motion.img
             src={image125}
             alt="AI Content Creation"
             className="w-full h-auto rounded-xl shadow-lg"
+            whileHover={{
+              x: [-10, 10, -10, 0],
+              y: [0, -10, 10, 0],
+              transition: {
+                duration: 0.6,
+                ease: 'easeInOut',
+                repeat: Infinity,
+                repeatDelay: 1,
+              },
+            }}
           />
           <div className="absolute bottom-0 right-0 w-3/4 h-3/4 bg-transparent rounded-xl"></div>
         </motion.div>

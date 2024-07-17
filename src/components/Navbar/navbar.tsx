@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
-  const navItems = ['Features', 'Pricing', 'Blog', 'Contact'];
+  const navItems = ['Home', 'Pricing', 'Blog', 'Contact'];
   const controls = useAnimation();
 
   useEffect(() => {
@@ -45,6 +46,7 @@ const Navbar: React.FC = () => {
             transition={{ duration: 0.5, delay: index * 0.1 + 0.5 }}
             className="relative"
           >
+            <Link to={`/${item.toLowerCase()}`}> 
             <motion.div
               whileHover={{ scale: 1.1 }}
               className="cursor-pointer text-white text-xl"
@@ -58,6 +60,7 @@ const Navbar: React.FC = () => {
                 transition={{ duration: 0.2 }}
               />
             </motion.div>
+            </Link>
           </motion.li>
         ))}
       </ul>
