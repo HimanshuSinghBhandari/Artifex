@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronDownIcon, ArrowLeftEndOnRectangleIcon } from '@heroicons/react/24/outline';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 interface User {
   username: string;
@@ -8,6 +9,7 @@ interface User {
 }
 
 const UserProfileDropdown: React.FC = () => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -34,6 +36,7 @@ const UserProfileDropdown: React.FC = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('currentUser');
+    navigate("/login");
     // Add any additional logout logic here (e.g., redirecting to login page)
   };
 
