@@ -66,6 +66,8 @@ const Navbar: React.FC = () => {
       </ul>
 
       {/* Login Button */}
+
+      <Link to={`/login`}> 
       <motion.button
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
@@ -75,6 +77,7 @@ const Navbar: React.FC = () => {
       >
         Login
       </motion.button>
+      </Link>
     </motion.nav>
   );
 };
