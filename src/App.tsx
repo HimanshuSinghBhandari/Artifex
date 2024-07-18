@@ -11,6 +11,8 @@ import Login from './pages/login';
 import Signup from './pages/signup';
 import Dashboard from './pages/dashboard';
 import Billing from './pages/billing';
+import SettingSec from './pages/setting';
+import Document from './pages/document';
 import './App.css';
 
 function App() {
@@ -29,6 +31,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/dashboard" element={isLoggedIn ? <Dashboard /> : <Navigate replace to="/login" />} />
         <Route path="/billing" element={isLoggedIn ? <Billing /> : <Navigate replace to="/login" />} />
+        <Route path="/settings" element={isLoggedIn ? <SettingSec /> : <Navigate replace to="/login" />} />
+        <Route path="/documents" element={isLoggedIn ? <Document /> : <Navigate replace to="/login" />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <FooterPage />

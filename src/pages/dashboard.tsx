@@ -4,7 +4,6 @@ import SearchBox from "../components/Searchbox/searchbox";
 import UserProfileDropdown from "../components/User-Dashboard/user-dashboard";
 import UserHeading from "../components/User-Dashboard/user-heading";
 import CardGrid from "../components/User-Dashboard/Card/user-card-grid";
-import BillingSection from "../components/User-Dashboard/Billing/billing-section";
 
 const Dashboard = () => {
 
