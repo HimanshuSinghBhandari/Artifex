@@ -53,7 +53,7 @@ const ContactForm: React.FC = () => {
 
   return (
     <div className="w-full max-w-2xl mx-auto py-16 px-4">
-      <h2 className="text-3xl font-bold text-center mb-8 text-white mt-6">Contact Us</h2>
+      <h2 className="text-3xl font-bold text-center mb-8 text-white mt-[5rem]">Contact Us</h2>
       <motion.form
         onSubmit={handleSubmit}
         className="space-y-4"
