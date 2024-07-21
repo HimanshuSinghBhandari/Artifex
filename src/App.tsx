@@ -13,6 +13,7 @@ import Dashboard from './pages/dashboard';
 import Billing from './pages/billing';
 import SettingSec from './pages/setting';
 import Document from './pages/document';
+import ContentGeneration from './pages/contentgenerationpage';
 import './App.css';
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/dashboard" element={isLoggedIn ? <Dashboard /> : <Navigate replace to="/login" />} />
+        <Route path="/dashboard/:link" element={isLoggedIn ? <ContentGeneration /> : <Navigate replace to="/login" />} />
         <Route path="/billing" element={isLoggedIn ? <Billing /> : <Navigate replace to="/login" />} />
         <Route path="/settings" element={isLoggedIn ? <SettingSec /> : <Navigate replace to="/login" />} />
         <Route path="/documents" element={isLoggedIn ? <Document /> : <Navigate replace to="/login" />} />
