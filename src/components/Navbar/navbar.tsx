@@ -17,7 +17,7 @@ const Navbar: React.FC = () => {
 
   return (
     <motion.nav
-      className="fixed w-full mt-4 py-6 px-12 flex justify-between items-center bg-white bg-opacity-10 backdrop-filter backdrop-blur-md rounded-xl mx-auto max-w-[95%] left-0 right-0"
+      className="fixed w-full mt-4 py-4 px-10 flex justify-between items-center bg-white bg-opacity-10 backdrop-filter backdrop-blur-md rounded-xl mx-auto max-w-[95%] left-0 right-0"
       initial={{ opacity: 0, y: -50 }}
       animate={controls}
       transition={{ duration: 0.7, ease: "easeOut" }}

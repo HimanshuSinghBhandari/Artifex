@@ -7,7 +7,7 @@ const FrontMain: React.FC = () => {
     <div className="min-h-screen flex flex-col items-center justify-center text-white p-8">
       {/* GitHub Link */}
       <motion.div
-        className="mb-4 bg-white bg-opacity-20 rounded-full p-3 inline-block cursor-pointer"
+        className="mb-4 bg-white bg-opacity-20 rounded-full p-3 inline-block cursor-pointer mt-8"
         whileHover={{ scale: 1.1 }}
       >
         <motion.a

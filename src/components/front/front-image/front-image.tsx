@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import image124 from './image124.svg';
+import image124 from './image124.png';
 
 const FrontImage: React.FC = () => {
   const controls = useAnimation();
