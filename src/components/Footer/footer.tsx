@@ -4,16 +4,14 @@ import {
   HomeIcon,
   EnvelopeIcon,
   PhoneIcon,
-  BookOpenIcon,
- 
 } from '@heroicons/react/24/outline';
+import {FaTwitter, FaLinkedinIn, FaGithub } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
   const socialIcons = [
-    { icon: <BookOpenIcon className="h-6 w-6" />, href: '#' },
-    { icon: <BookOpenIcon className="h-6 w-6" />, href: '#' },
-    { icon: <BookOpenIcon className="h-6 w-6" />, href: '#' },
-    { icon: <BookOpenIcon className="h-6 w-6" />, href: '#' },
+    { icon: <FaGithub className="h-6 w-6" />, href: 'https://github.com/HimanshuSinghBhandari' },
+    { icon: <FaTwitter className="h-6 w-6" />, href: 'https://x.com/himanshu_14rt' },
+    { icon: <FaLinkedinIn className="h-6 w-6" />, href: 'https://www.linkedin.com/in/himanshu-singh-5226a628a' },
   ];
 
   const contactIcons = [
