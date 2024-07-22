@@ -2,7 +2,6 @@ import React, {useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { FaBlog, FaYoutube, FaInstagram, FaSync, FaSearch, FaCopy } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import '@toast-ui/editor/dist/toastui-editor.css';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { chatSession } from '../../utils/aimodel';
