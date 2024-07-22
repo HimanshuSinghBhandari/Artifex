@@ -3,7 +3,7 @@ import ContentGenerationPage from "../components/Contentgeneration/conetent-gene
 
 const ContentGeneration = () => {
   return (
-    <div className='flex h-screen bg-gray-200 overflow-hidden'>
+    <div className='flex h-screen bg-gradient-to-b from-purple-200 via-purple-400 to-purple-200 overflow-hidden'>
       <Sidebar />
       <div className='flex flex-col flex-grow overflow-hidden'>
         
