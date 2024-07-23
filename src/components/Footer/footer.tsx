@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
   ];
 
   const contactIcons = [
-    { icon: <HomeIcon className="h-6 w-6" />, text: '123 Main St, Anytown USA' },
+    { icon: <HomeIcon className="h-6 w-6" />, text: '12345 UK, IND' },
     { icon: <EnvelopeIcon className="h-6 w-6" />, text: 'info@example.com' },
     { icon: <PhoneIcon className="h-6 w-6" />, text: '+91 (555) 555-5555' },
   ];
@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
             transition={{ duration: 0.5 }}
           >
             <h3 className="text-2xl font-bold">Stay Connected</h3>
-            <p className="text-gray-400">Follow us on social media</p>
+            <p className="text-gray-400">Follow me on social media</p>
             <div className="flex space-x-6 mt-4">
               {socialIcons.map((icon, index) => (
                 <a

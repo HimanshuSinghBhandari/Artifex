@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 
 const FrontMarquee: React.FC = () => {
   const brands = [
-    "Apple", "Google", "Amazon", "Microsoft", "Tesla", "Facebook", "Netflix", "Uber", "Airbnb"
+    "Artifex", "Lumina", "Zephyr", "Solaris", "Nexus", "Astra", "Quasar", "Orion", "Vega",
   ];
 
   const controls = useAnimation();
