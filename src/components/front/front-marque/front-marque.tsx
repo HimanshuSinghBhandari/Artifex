@@ -13,7 +13,7 @@ const FrontMarquee: React.FC = () => {
     threshold: 0.1,
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (inView) {
       controls.start("visible");
     } else {
@@ -54,13 +54,13 @@ const FrontMarquee: React.FC = () => {
 
   return (
     <motion.div 
-      className="w-full py-12 overflow-hidden"
+      className="w-full py-6 sm:py-8 md:py-12 overflow-hidden"
       ref={ref}
       initial="hidden"
       animate={controls}
       variants={containerVariants}
     >
-      <h2 className="text-3xl font-bold text-center mb-8 text-white">
+      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 sm:mb-6 md:mb-8 text-white">
         Trusted by Leading Brands
       </h2>
       <div className="relative">
@@ -91,11 +91,11 @@ const FrontMarquee: React.FC = () => {
           {[...brands, ...brands, ...brands, ...brands].map((brand, index) => (
             <motion.div
               key={index}
-              className="inline-block mx-4"
+              className="inline-block mx-2 sm:mx-3 md:mx-4"
               variants={itemVariants}
             >
               <motion.div
-                className="w-48 h-16 flex items-center justify-center text-xl font-semibold text-white bg-opacity-20 bg-white rounded-[220px] backdrop-blur-sm"
+                className="w-32 sm:w-40 md:w-48 h-12 sm:h-14 md:h-16 flex items-center justify-center text-sm sm:text-base md:text-xl font-semibold text-white bg-opacity-20 bg-white rounded-[220px] backdrop-blur-sm"
                 whileHover={{
                   scale: 1.1,
                   backgroundColor: "#9333ea",

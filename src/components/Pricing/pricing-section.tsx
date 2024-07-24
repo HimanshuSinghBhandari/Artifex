@@ -54,7 +54,7 @@ const PricingSection: React.FC = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-8 mt-[5rem] text-white text-center">Pricing Section</h2>
+        <h2 className="text-3xl font-bold mb-8 md:mt-[5rem] mt-[1rem] text-white text-center">Pricing Section</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {pricingData.map((card, index) => (
             <PricingCard

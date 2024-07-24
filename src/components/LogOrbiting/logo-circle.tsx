@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaYoutube, FaReddit } from 'react-icons/fa';
 
@@ -11,13 +11,33 @@ const LogoWithOrbitingIcons: React.FC = () => {
     { Icon: FaYoutube },
     { Icon: FaReddit },
   ];
-  const radius = 180;
-  const svgSize = radius * 2 + 100; // Add some padding
 
+  const [radius, setRadius] = useState(180);
+  const [svgSize, setSvgSize] = useState(460);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
+  useEffect(() => {
+    const handleResize = () => {
+      const screenWidth = window.innerWidth;
+      if (screenWidth < 640) { // Mobile
+        setRadius(100);
+        setSvgSize(250);
+      } else if (screenWidth < 1024) { // Tablet
+        setRadius(140);
+        setSvgSize(340);
+      } else { // Desktop
+        setRadius(180);
+        setSvgSize(460);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <div className={`relative w-[${svgSize}px] h-[${svgSize}px]`}>
+    <div className="flex justify-center items-center w-full h-full">
       <svg width={svgSize} height={svgSize} viewBox={`-${svgSize/2} -${svgSize/2} ${svgSize} ${svgSize}`}>
         {/* Central Artifex logo */}
         <motion.text
@@ -26,7 +46,7 @@ const LogoWithOrbitingIcons: React.FC = () => {
           textAnchor="middle"
           dominantBaseline="central"
           fill="white"
-          fontSize="40"
+          fontSize={svgSize / 10}
           fontWeight="bold"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -63,10 +83,15 @@ const LogoWithOrbitingIcons: React.FC = () => {
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
-                <circle cx="0" cy="0" r="25" fill="white" />
-                <foreignObject x="-12" y="-12" width="24" height="24">
+                <circle cx="0" cy="0" r={svgSize / 20} fill="white" />
+                <foreignObject 
+                  x={-svgSize / 40} 
+                  y={-svgSize / 40} 
+                  width={svgSize / 20} 
+                  height={svgSize / 20}
+                >
                   <div className="flex items-center justify-center w-full h-full">
-                    <Icon className="text-purple-600" size={18} />
+                    <Icon className="text-purple-600" size={svgSize / 25} />
                   </div>
                 </foreignObject>
               </motion.g>
