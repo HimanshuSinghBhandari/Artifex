@@ -15,10 +15,10 @@ const Front = () => {
         <FrontMarquee/>
         <FrontDiv/>
         <FeaturesSection />
-        <div className="my-16"> {/* Added margin top and bottom */}
+        <div className="md:my-16 my-12"> {/* Added margin top and bottom */}
           <LogoWithOrbitingIcons/>
         </div>
-        <div className="mb-16 mt-12"> {/* Added margin bottom */}
+        <div className="md:mb-16 md:mt-12 mb-12 mt-9"> {/* Added margin bottom */}
           <LaunchingSoonCard/>
         </div>
       </div>

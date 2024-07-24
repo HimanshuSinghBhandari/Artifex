@@ -1,30 +1,65 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { auth, db } from '../service/firebase';
+import { setDoc, doc } from 'firebase/firestore';
+import { toast, ToastContainer } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Signup: React.FC = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleSignup = (e: React.FormEvent) => {
+  const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-    
-    if (users.some((u: { email: string }) => u.email === email)) {
-      setError('Email already exists');
-      return;
-    }
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const users = userCredential.user;
+      console.log(users);
 
-    users.push({ username, email, password });
-    localStorage.setItem('users', JSON.stringify(users));
-    navigate('/login');
+      if(users){
+        await setDoc(doc(db, "Users", users.uid), {
+          email:users.email,
+          username:username,
+        });
+      }
+      // Update user profile with username
+      await updateProfile(users, {
+        displayName: username
+      });
+
+      toast.success('Account created successfully!');
+      navigate('/login');
+    } catch (error: any) {
+      let errorMessage = 'An error occurred during signup.';
+      if (error.code === 'auth/email-already-in-use') {
+        errorMessage = 'This email is already in use.';
+      } else if (error.code === 'auth/invalid-email') {
+        errorMessage = 'Invalid email address.';
+      } else if (error.code === 'auth/weak-password') {
+        errorMessage = 'Password should be at least 6 characters.';
+      }
+      toast.error(errorMessage);
+    }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-800 to-indigo-900 p-4">
+     <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <motion.div 
         className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg p-8 rounded-2xl shadow-2xl w-full max-w-md mt-[7rem]"
         initial={{ opacity: 0, y: -50 }}
@@ -91,7 +126,6 @@ const Signup: React.FC = () => {
               placeholder="Choose a password"
             />
           </motion.div>
-          {error && <p className="text-red-300 text-sm">{error}</p>}
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

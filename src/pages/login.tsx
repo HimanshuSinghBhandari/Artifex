@@ -1,29 +1,50 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../service/firebase';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-    const user = users.find((u: { email: string; password: string }) => u.email === email && u.password === password);
-    
-    if (user) {
-      localStorage.setItem('currentUser', JSON.stringify(user));
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      toast.success('Login successful!');
       onLogin(); // Call onLogin to update the login state in App component
       navigate('/dashboard');
-    } else {
-      setError('Invalid email or password');
+    } catch (error: any) {
+      let errorMessage = 'An error occurred during login.';
+      if (error.code === 'auth/user-not-found') {
+        errorMessage = 'No user found with this email.';
+      } else if (error.code === 'auth/wrong-password') {
+        errorMessage = 'Incorrect password.';
+      } else if (error.code === 'auth/invalid-email') {
+        errorMessage = 'Invalid email address.';
+      }
+      toast.error(errorMessage);
     }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-800 to-indigo-900 p-4">
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <motion.div 
         className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg p-8 rounded-2xl shadow-2xl w-full max-w-md mt-[5rem]"
         initial={{ opacity: 0, y: -50 }}
@@ -44,7 +65,7 @@ const Login: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
           >
-            <label htmlFor="email" className="block text-white text-sm font-medium mb=2">Email</label>
+            <label htmlFor="email" className="block text-white text-sm font-medium mb-2">Email</label>
             <motion.input
               whileFocus={{ scale: 1.02 }}
               type="email"
@@ -61,7 +82,7 @@ const Login: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.5 }}
           >
-            <label htmlFor="password" className="block text-white text-sm font-medium mb=2">Password</label>
+            <label htmlFor="password" className="block text-white text-sm font-medium mb-2">Password</label>
             <motion.input
               whileFocus={{ scale: 1.02 }}
               type="password"
@@ -73,7 +94,6 @@ const Login: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
               placeholder="Enter your password"
             />
           </motion.div>
-          {error && <p className="text-red-300 text-sm">{error}</p>}
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

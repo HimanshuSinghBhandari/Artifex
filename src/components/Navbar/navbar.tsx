@@ -20,6 +20,10 @@ const Navbar: React.FC = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleNavItemClick = () => {
+    setIsOpen(false);
+  };
+
   return (
     <motion.nav
       className="fixed w-[90%] sm:w-[95%] mt-4 py-2 sm:py-4 px-3 sm:px-6 flex justify-between items-center bg-white bg-opacity-10 backdrop-filter backdrop-blur-md rounded-xl mx-auto left-0 right-0"
@@ -111,6 +115,7 @@ const Navbar: React.FC = () => {
             <Link key={item} to={`/${item.toLowerCase()}`}>
               <motion.div
                 className="text-white text-lg py-2 cursor-pointer"
+                onClick={handleNavItemClick} 
                 whileHover={{ scale: 1.05, x: 5 }}
                 transition={{ duration: 0.2 }}
               >
