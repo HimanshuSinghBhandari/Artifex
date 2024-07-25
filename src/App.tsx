@@ -16,6 +16,7 @@ import Billing from './pages/billing';
 import SettingSec from './pages/setting';
 import Document from './pages/document';
 import ContentGeneration from './pages/contentgenerationpage';
+import Loader from './pages/loader';
 import './App.css';
 
 function App() {
@@ -37,7 +38,7 @@ function App() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div> <Loader /> </div>;
   }
 
   return (
