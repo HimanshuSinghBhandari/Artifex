@@ -57,16 +57,16 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/dashboard/:link" element={<ContentGeneration />} />
             <Route path="/billing" element={<Billing />} />
-            <Route path="/setting" element={<SettingSec />} />
-            <Route path="/document" element={<Document />} />
+            <Route path="/settings" element={<SettingSec />} />
+            <Route path="/documents" element={<Document />} />
           </>
         ) : (
           <>
             <Route path="/dashboard" element={<Navigate to="/login" />} />
             <Route path="/dashboard/:link" element={<Navigate to="/login" />} />
             <Route path="/billing" element={<Navigate to="/login" />} />
-            <Route path="/setting" element={<Navigate to="/login" />} />
-            <Route path="/document" element={<Navigate to="/login" />} />
+            <Route path="/settings" element={<Navigate to="/login" />} />
+            <Route path="/documents" element={<Navigate to="/login" />} />
           </>
         )}
         <Route path="*" element={<NotFound />} />
